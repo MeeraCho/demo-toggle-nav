@@ -1,4 +1,93 @@
 body {
     background-color: #192f5e;
     font-family: sans-serif;
+    color: #f5f5f5;
 }
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Setp 1: Style the default nav in it's showing state. 
+Starting with the mobile view, style the layout and links for how they will look when visible. */
+
+header {
+    background-color: #fff;
+    padding: 1rem;
+}
+
+header a {
+    color: #3f3f3f;
+    text-decoration: none;
+    display: block;
+}
+
+.menu a:hover,
+.menu a:active {
+    background-color: gainsboro;
+    border-radius: 4px;
+}
+
+.menu li {
+    line-height: 40px;
+    text-align: center;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+}
+
+/* Step 2: Now let's hide the menu. Once it's hidden this is the default load stage. 
+If using display: none -- that property cannot be transitioned.  */
+
+header nav {
+    max-height: 0;
+    overflow: hidden;
+    /* transition: which one / how long / style */
+    transition: max-height 0.5s ease-in-out;
+}
+
+/* Step 3: Create a special class that will show the menu. This class name will only exist in the css file for now. 
+The Javascript file will add this class to the marup for us. */
+
+.show-nav {
+    /* max-height: auto, unset, fit-content 는 transition 안됨  */
+    max-height: 16rem; 
+}
+
+/* Step 4: Add a media query and show the nav by default for a horizontal screen layout */
+
+@media screen and (min-width: 700px) {
+    button.toggle-btn {
+        display: none;
+    }
+
+    /* show the nav by default  */
+    header nav {
+        max-height: 90px;
+        overflow: visible;
+    }
+
+    .inner-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ul.menu {
+        display: flex;
+        gap: 1rem;
+    }
+
+    ul.menu a {
+        padding: 0 0.5rem;
+    }
+}
+
+
+
